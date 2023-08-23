@@ -1,3 +1,4 @@
+import 'package:fake_data_generator/api/services/api.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -30,6 +31,24 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final api = ApiService();
+
+  @override
+  void initState() {
+    super.initState();
+    fetchData();
+  }
+
+  void fetchData() {
+    api.getUser();
+    api.getAddress();
+    api.getBank();
+    api.getAppliance();
+    api.getBeer();
+    api.getBloodType();
+    api.getCreditCard();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
