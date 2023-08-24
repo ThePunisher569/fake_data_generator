@@ -41,12 +41,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void fetchData() {
     api.getUser();
-    api.getAddress();
-    api.getBank();
-    api.getAppliance();
-    api.getBeer();
-    api.getBloodType();
-    api.getCreditCard();
   }
 
   @override

@@ -1,9 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:fake_data_generator/utils/constants.dart';
 
-// TODO In each method, Convert JSON Response into model and return that model
+import '../models/user/user.dart';
+
 class ApiService {
-  final dio = Dio();
+  final dio = Dio()..options.baseUrl = Constants.url;
 
   ApiService._();
 
@@ -14,19 +15,28 @@ class ApiService {
     return _instance!;
   }
 
-  Future<void> getUser() async {
+  Future<User> getUser() async {
     try {
-      print('Fetching user data');
-      final userResponse = await dio.get('${Constants.url}/users');
+      logger.i('Fetching user data');
+      final userResponse = await dio.get('/users');
 
       if (userResponse.statusCode == 200) {
         final userData = userResponse.data;
-        logger.d(userData);
+        //logger.d(userData);
+
+        final user = User.fromJson(userData);
+
+        logger.i('user data fetched and serialized successfully!');
+        logger.d(user);
+
+        return user;
       } else {
-        logger.e('Failed to fetch user data');
+        throw Exception(
+            'Failed to fetch user data due to ${userResponse.statusCode} message: ${userResponse.statusMessage}');
       }
-    } catch (e) {
+    } on Exception catch (e) {
       logger.e('Error fetching user data: $e');
+      throw Exception('Error fetching user data');
     }
   }
 
