@@ -17,11 +17,12 @@ Map<String, dynamic> _$EmploymentToJson(Employment instance) =>
       'key_skill': instance.keySkill,
     };
 
-CreditCard _$CreditCardFromJson(Map<String, dynamic> json) => CreditCard(
+UserCreditCard _$UserCreditCardFromJson(Map<String, dynamic> json) =>
+    UserCreditCard(
       json['cc_number'] as String,
     );
 
-Map<String, dynamic> _$CreditCardToJson(CreditCard instance) =>
+Map<String, dynamic> _$UserCreditCardToJson(UserCreditCard instance) =>
     <String, dynamic>{
       'cc_number': instance.ccNumber,
     };

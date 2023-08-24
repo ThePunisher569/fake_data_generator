@@ -1,6 +1,12 @@
 import 'package:dio/dio.dart';
+import 'package:fake_data_generator/api/models/address/address.dart';
+import 'package:fake_data_generator/api/models/appliance/appliance.dart';
+import 'package:fake_data_generator/api/models/bank/bank.dart';
+import 'package:fake_data_generator/api/models/blood_type/blood_type.dart';
+import 'package:fake_data_generator/api/models/credit_card/credit_card.dart';
 import 'package:fake_data_generator/utils/constants.dart';
 
+import '../models/beer/beer.dart';
 import '../models/user/user.dart';
 
 class ApiService {
@@ -40,99 +46,148 @@ class ApiService {
     }
   }
 
-  Future<void> getAddress() async {
+  Future<Address> getAddress() async {
     try {
-      print('Fetching address data');
-      final addressResponse = await dio.get('${Constants.url}/addresses');
+      logger.i('Fetching address data');
+      final addressResponse = await dio.get('/addresses');
 
       if (addressResponse.statusCode == 200) {
         final addressData = addressResponse.data;
-        logger.d(addressData);
+        //logger.d(addressData);
+
+        final address = Address.fromJson(addressData);
+
+        logger.i('address data fetched and serialized successfully!');
+        logger.d(address);
+
+        return address;
       } else {
-        logger.e('Failed to fetch address data');
+        throw Exception(
+            'Failed to fetch address data due to ${addressResponse.statusCode} message: ${addressResponse.statusMessage}');
       }
     } catch (e) {
       logger.e('Error fetching address data: $e');
+      throw Exception('Error fetching address data');
     }
   }
 
-  Future<void> getBank() async {
+  Future<Bank> getBank() async {
     try {
-      print('Fetching banks data');
-      final bankResponse = await dio.get('${Constants.url}/banks');
+      logger.i('Fetching banks data');
+      final bankResponse = await dio.get('/banks');
 
       if (bankResponse.statusCode == 200) {
         final bankData = bankResponse.data;
-        logger.d(bankData);
+        //logger.d(bankData);
+
+        final bank = Bank.fromJson(bankData);
+        logger.i('bank data fetched and serialized successfully!');
+        logger.d(bank);
+
+        return bank;
       } else {
-        logger.e('Failed to fetch banks data');
+        throw Exception(
+            'Failed to fetch bank data due to ${bankResponse.statusCode} message: ${bankResponse.statusMessage}');
       }
     } catch (e) {
-      logger.e('Error fetching banks data: $e');
+      logger.e('Error fetching bank data: $e');
+      throw Exception('Error fetching bank data');
     }
   }
 
-  Future<void> getAppliance() async {
+  Future<Appliance> getAppliance() async {
     try {
-      print('Fetching appliance data');
-      final applianceResponse = await dio.get('${Constants.url}/appliances');
+      logger.i('Fetching appliance data');
+      final applianceResponse = await dio.get('/appliances');
 
       if (applianceResponse.statusCode == 200) {
         final applianceData = applianceResponse.data;
-        logger.d(applianceData);
+        // logger.d(applianceData);
+
+        final appliance = Appliance.fromJson(applianceData);
+        logger.i('appliance data fetched and serialized successfully!');
+        logger.d(appliance);
+
+        return appliance;
       } else {
-        logger.e('Failed to fetch appliance data');
+        throw Exception(
+            'Failed to fetch appliance data due to ${applianceResponse.statusCode} message: ${applianceResponse.statusMessage}');
       }
     } catch (e) {
       logger.e('Error fetching appliance data: $e');
+      throw Exception('Error fetching appliance data');
     }
   }
 
-  Future<void> getBeer() async {
+  Future<Beer> getBeer() async {
     try {
-      print('Fetching beer data');
-      final beerResponse = await dio.get('${Constants.url}/beers');
+      logger.i('Fetching beer data');
+      final beerResponse = await dio.get('/beers');
 
       if (beerResponse.statusCode == 200) {
         final beerData = beerResponse.data;
-        logger.d(beerData);
+        // logger.d(beerData);
+
+        final beer = Beer.fromJson(beerData);
+        logger.i('beer data fetched and serialized successfully!');
+        logger.d(beer);
+
+        return beer;
       } else {
-        logger.e('Failed to fetch beer data');
+        throw Exception(
+            'Failed to fetch appliance data due to ${beerResponse.statusCode} message: ${beerResponse.statusMessage}');
       }
     } catch (e) {
       logger.e('Error fetching beer data: $e');
+      throw Exception('Error fetching beer data');
     }
   }
 
-  Future<void> getBloodType() async {
+  Future<BloodType> getBloodType() async {
     try {
-      print('Fetching bloodType data');
-      final bloodTypeResponse = await dio.get('${Constants.url}/blood_types');
+      logger.i('Fetching bloodType data');
+      final bloodTypeResponse = await dio.get('/blood_types');
 
       if (bloodTypeResponse.statusCode == 200) {
         final bloodTypeData = bloodTypeResponse.data;
-        logger.d(bloodTypeData);
+        // logger.d(bloodTypeData);
+
+        final bloodType = BloodType.fromJson(bloodTypeData);
+        logger.i('bloodType data fetched and serialized successfully!');
+        logger.d(bloodType);
+
+        return bloodType;
       } else {
-        logger.e('Failed to fetch bloodType data');
+        throw Exception(
+            'Failed to fetch bloodType data due to ${bloodTypeResponse.statusCode} message: ${bloodTypeResponse.statusMessage}');
       }
     } catch (e) {
       logger.e('Error fetching bloodType data: $e');
+      throw Exception('Error fetching bloodType data');
     }
   }
 
-  Future<void> getCreditCard() async {
+  Future<CreditCard> getCreditCard() async {
     try {
-      print('Fetching creditCard data');
-      final creditCardResponse = await dio.get('${Constants.url}/credit_cards');
+      logger.i('Fetching creditCard data');
+      final creditCardResponse = await dio.get('/credit_cards');
 
       if (creditCardResponse.statusCode == 200) {
         final creditCardData = creditCardResponse.data;
         logger.d(creditCardData);
+
+        final creditCard = CreditCard.fromJson(creditCardData);
+        logger.i('creditCard data fetched and serialized successfully!');
+        logger.d(creditCard);
+
+        return creditCard;
       } else {
-        logger.e('Failed to fetch creditCard data');
+        throw Exception(
+            'Failed to fetch creditCard data due to ${creditCardResponse.statusCode} message: ${creditCardResponse.statusMessage}');
       }
     } catch (e) {
       logger.e('Error fetching creditCard data: $e');
+      throw Exception('Error fetching creditCard data');
     }
   }
 }

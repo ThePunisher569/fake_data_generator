@@ -11,7 +11,7 @@ class User {
   final String uid, password, username, email, avatar, gender, firstName;
   final String dateOfBirth, socialInsuranceNumber, lastName, phoneNumber;
 
-  final CreditCard creditCard;
+  final UserCreditCard creditCard;
 
   final UserAddress address;
 

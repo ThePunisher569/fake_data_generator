@@ -20,17 +20,17 @@ class Employment {
 
 // User Credit Card
 @JsonSerializable(createFactory: true, fieldRename: FieldRename.snake)
-class CreditCard {
+class UserCreditCard {
   final String ccNumber;
 
-  CreditCard(this.ccNumber);
+  UserCreditCard(this.ccNumber);
 
-  factory CreditCard.fromJson(Map<String, dynamic> json) =>
-      _$CreditCardFromJson(json);
+  factory UserCreditCard.fromJson(Map<String, dynamic> json) =>
+      _$UserCreditCardFromJson(json);
 
   @override
   String toString() {
-    return 'CreditCard{ccNumber: $ccNumber}';
+    return 'UserCreditCard{ccNumber: $ccNumber}';
   }
 }
 

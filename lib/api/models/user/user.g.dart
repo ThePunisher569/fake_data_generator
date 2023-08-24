@@ -21,7 +21,7 @@ User _$UserFromJson(Map<String, dynamic> json) => User(
       json['date_of_birth'] as String,
       UserAddress.fromJson(json['address'] as Map<String, dynamic>),
       Employment.fromJson(json['employment'] as Map<String, dynamic>),
-      CreditCard.fromJson(json['credit_card'] as Map<String, dynamic>),
+      UserCreditCard.fromJson(json['credit_card'] as Map<String, dynamic>),
       Subscription.fromJson(json['subscription'] as Map<String, dynamic>),
     );
 
