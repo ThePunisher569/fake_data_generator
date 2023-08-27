@@ -5,6 +5,8 @@ void main() {
   runApp(const MyApp());
 }
 
+//TODO add font
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -17,6 +19,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       routerConfig: myRouter,
+      debugShowCheckedModeBanner: false,
     );
   }
 }
