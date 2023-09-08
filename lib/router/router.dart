@@ -33,7 +33,7 @@ final myRouter = GoRouter(
       builder: (context, state) => const BeerScreen(),
     ),
     GoRoute(
-      path: '/banks',
+      path: '/bank',
       builder: (context, state) => const BankScreen(),
     ),
     GoRoute(

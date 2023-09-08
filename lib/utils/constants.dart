@@ -4,7 +4,8 @@ import 'package:logger/logger.dart';
 class Constants {
   static const url = 'https://random-data-api.com/api/v2/';
   static const appName = 'Fake Data Generator';
-  static const appDesc = 'See different types of information generated randomly';
+  static const appDesc =
+      'See different types of information generated randomly';
 
   static const contentList = [
     'Person',
@@ -14,7 +15,6 @@ class Constants {
     'Blood Type',
     'Appliance',
     'Credit Card',
-
   ];
 
   static const gradientList = [

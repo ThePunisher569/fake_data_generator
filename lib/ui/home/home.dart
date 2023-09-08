@@ -12,23 +12,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  /// these colors are used in title wave animation
-  List<Color> titleColors = [
-    Colors.purple,
-    Colors.indigo,
-    Colors.blue,
-    Colors.green,
-    Colors.yellow,
-    Colors.orange,
-    Colors.red,
-  ];
-
-  @override
-  void initState() {
-    titleColors.shuffle();
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -42,17 +25,16 @@ class _HomeState extends State<Home> {
               title: Center(
                 child: AnimatedTextKit(
                   animatedTexts: [
-                    ColorizeAnimatedText(
-                      Constants.appName,
-                      textStyle:
-                          Theme.of(context).textTheme.headlineLarge!.copyWith(
-                                fontWeight: FontWeight.bold,
-                              ),
-                      speed: const Duration(milliseconds: 800),
-                      colors: titleColors,
-                      textAlign: TextAlign.center,
-                    ),
+                    TypewriterAnimatedText(Constants.appName,
+                        textStyle:
+                            Theme.of(context).textTheme.headlineLarge!.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                        textAlign: TextAlign.center,
+                        speed: const Duration(milliseconds: 250),
+                        curve: Curves.decelerate)
                   ],
+                  repeatForever: true,
                 ),
               ),
             ),
