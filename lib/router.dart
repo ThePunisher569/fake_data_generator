@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../ui/address/address_screen.dart';
-import '../ui/appliance/appliance_screen.dart';
-import '../ui/bank/bank_screen.dart';
-import '../ui/beer/beer_screen.dart';
-import '../ui/blood_type/blood_type_screen.dart';
-import '../ui/credit_card/credit_card_screen.dart';
-import '../ui/home/home.dart';
-import '../ui/user/user_screen.dart';
+import 'ui/address/address_screen.dart';
+import 'ui/appliance/appliance_screen.dart';
+import 'ui/bank/bank_screen.dart';
+import 'ui/beer/beer_screen.dart';
+import 'ui/blood_type/blood_type_screen.dart';
+import 'ui/credit_card/credit_card_screen.dart';
+import 'ui/home/home.dart';
+import 'ui/user/user_screen.dart';
 
 // TODO add different custom animation for each route
 

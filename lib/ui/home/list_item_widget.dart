@@ -1,4 +1,4 @@
-import 'package:fake_data_generator/router/router.dart';
+import 'package:fake_data_generator/router.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
@@ -37,31 +37,40 @@ class ListItemWidget extends StatelessWidget {
             myRouter.go('/credit-card');
         }
       },
-      child: SizedBox(
-        height: MediaQuery.of(context).size.height * 0.3,
-        child: Stack(
-          fit: StackFit.expand,
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                gradient: SweepGradient(
-                  colors: colors,
-                  transform: const GradientRotation(math.pi),
-                ),
-                borderRadius: BorderRadius.circular(24),
-              ),
-              child: Container(
-                alignment: Alignment.bottomLeft,
-                padding: const EdgeInsets.only(left: 48, bottom: 48),
-                child: Text(
-                  name,
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        color: Colors.white,
-                      ),
-                ),
-              ),
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(40),
+        ),
+        elevation: 16,
+        shadowColor: Colors.lime.shade300,
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        child: Container(
+          height: MediaQuery.of(context).size.height * 0.4,
+          decoration: BoxDecoration(
+            gradient: SweepGradient(
+              colors: colors,
+              transform: const GradientRotation(math.pi),
+              tileMode: TileMode.repeated,
+              center: Alignment.center,
             ),
-          ],
+            borderRadius: BorderRadius.circular(24),
+          ),
+          child: Container(
+            alignment: Alignment.centerRight,
+            padding: const EdgeInsets.only(
+              right: 48,
+              bottom: 48,
+              top: 48,
+            ),
+            child: Text(
+              name,
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 2,
+                    inherit: true,
+                  ),
+            ),
+          ),
         ),
       ),
     );
