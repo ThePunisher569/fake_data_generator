@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import '../../utils/constants.dart';
-import 'list_item_widget.dart';
+import 'categories_list_item_widget.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});

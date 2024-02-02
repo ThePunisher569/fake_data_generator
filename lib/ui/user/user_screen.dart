@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:glassmorphism/glassmorphism.dart';
 import 'package:awesome_card/awesome_card.dart' as cc;
@@ -79,111 +78,126 @@ class _UserScreenState extends State<UserScreen> {
   Widget build(BuildContext context) {
     final mediaQ = MediaQuery.sizeOf(context);
 
-    return isLoading
-        ? SafeArea(
-            child: Scaffold(
-              body: Center(
-                child: CupertinoActivityIndicator(
-                  color: Colors.deepPurpleAccent.shade200,
-                  radius: 48,
-                ),
-              ),
-            ),
-          )
-        : SafeArea(
-            child: Scaffold(
-              body: Container(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: const AssetImage('assets/bg.jpg'),
-                    filterQuality: FilterQuality.high,
-                    alignment: Alignment.center,
-                    fit: BoxFit.fill,
-                    onError: (exception, stackTrace) => logger.e(
-                        '${exception.toString()}\n\n ${stackTrace.toString()}'),
-                  ),
-                ),
-                child: Center(
-                  child: GlassmorphicContainer(
-                    width: mediaQ.width * 0.88,
-                    height: mediaQ.height * 0.92,
-                    borderRadius: 32,
-                    blur: 8,
-                    alignment: Alignment.center,
-                    padding: const EdgeInsets.all(32),
-                    border: 3,
-                    linearGradient: LinearGradient(
-                      begin: Alignment.topRight,
-                      end: Alignment.bottomLeft,
-                      colors: [
-                        Colors.black.withOpacity(0.1),
-                        Colors.black.withOpacity(0.6),
-                      ],
-                      stops: const [0.7, 1],
-                    ),
-                    borderGradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: [
-                        const Color(0xFFffffff).withOpacity(0.4),
-                        const Color(0xFFFFFFFF).withOpacity(0.8),
-                      ],
-                    ),
-                    child: SingleChildScrollView(
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      padding: const EdgeInsets.all(32),
-                      physics: const BouncingScrollPhysics(),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              ProfileAvatar(user: user),
-                              gapH80,
-                              UserInfo(user: user)
-                            ],
-                          ),
-                          gapV48,
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              cc.CreditCard(
-                                width: mediaQ.width * 0.34,
-                                height: mediaQ.height * 0.4,
-                                cardNumber: card!.creditCardNumber,
-                                cardExpiry: card!.creditCardExpiryDate,
-                                cardHolderName:
-                                    '${user!.firstName} ${user!.lastName}',
-                                mask: card!.creditCardType,
-                                cvv: card!.id.toString().substring(0, 2),
-                                bankName: "Axis Bank",
-                                cardType: cc.CardType.discover,
-                                // Optional if you want to override Card Type
-                                showBackSide: false,
-                                frontBackground: cc.CardBackgrounds.custom(
-                                  Colors.blueGrey.shade800.value,
-                                ),
-                                backBackground: cc.CardBackgrounds.black,
-                                showShadow: true,
-                                textExpDate: 'Exp. Date',
-                                textName: 'Name',
-                                textExpiry: 'MM/YY',
-                              ),
+    final theme = Theme.of(context);
 
-                              // TODO implement subscription
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+    return SafeArea(
+      child: Scaffold(
+        body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: const AssetImage('assets/bg.jpg'),
+              filterQuality: FilterQuality.high,
+              alignment: Alignment.center,
+              fit: BoxFit.fill,
+              onError: (exception, stackTrace) => logger
+                  .e('${exception.toString()}\n\n ${stackTrace.toString()}'),
             ),
-          );
+          ),
+          alignment: Alignment.center,
+          child: GlassmorphicContainer(
+            width: mediaQ.width * 0.88,
+            height: mediaQ.height * 0.92,
+            borderRadius: 32,
+            blur: 6,
+            alignment: Alignment.center,
+            border: 2,
+            linearGradient: LinearGradient(
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+              colors: [
+                Colors.white.withOpacity(0),
+                Colors.white.withOpacity(0.2),
+              ],
+              stops: const [0.7, 1],
+            ),
+            borderGradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                const Color(0xFFffffff).withOpacity(0.4),
+                const Color(0xFFFFFFFF).withOpacity(0.8),
+              ],
+            ),
+            child: SingleChildScrollView(
+              clipBehavior: Clip.antiAliasWithSaveLayer,
+              padding: const EdgeInsets.symmetric(
+                vertical: 32,
+                horizontal: 48,
+              ),
+              physics: const BouncingScrollPhysics(),
+              child: isLoading
+                  ? loadingWidget
+                  : Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        FloatingActionButton.extended(
+                          backgroundColor: Colors.pink.shade900,
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          elevation: 32,
+                          extendedIconLabelSpacing: 12.0,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(32),
+                          ),
+                          tooltip:
+                              'Refresh this page to generate another information about user',
+                          foregroundColor: Colors.orange.shade300,
+                          focusElevation: 48,
+                          onPressed: () {
+                            getData();
+                          },
+                          label: Text(
+                            'Generate Another Information',
+                            style: theme.textTheme.bodyLarge?.copyWith(
+                              color: Colors.orange.shade300,
+                            ),
+                          ),
+                          icon: const Icon(Icons.refresh_rounded),
+                        ),
+                        gapV24,
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            ProfileAvatar(user: user),
+                            gapH72,
+                            UserInfo(user: user)
+                          ],
+                        ),
+                        gapV48,
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            cc.CreditCard(
+                              width: mediaQ.width * 0.34,
+                              height: mediaQ.height * 0.4,
+                              cardNumber: card!.creditCardNumber,
+                              cardExpiry: card!.creditCardExpiryDate,
+                              cardHolderName:
+                                  '${user!.firstName} ${user!.lastName}',
+                              mask: card!.creditCardType,
+                              bankName: "Axis Bank",
+                              cardType: cc.CardType.discover,
+                              // Optional if you want to override Card Type
+                              showBackSide: false,
+                              frontBackground: cc.CardBackgrounds.custom(
+                                Colors.pink.shade900.value,
+                              ),
+                              backBackground: cc.CardBackgrounds.black,
+                              showShadow: true,
+                              textExpDate: 'Exp. Date',
+                              textName: 'Name',
+                              textExpiry: 'MM/YY',
+                            ),
+
+                            // TODO implement subscription
+                          ],
+                        )
+                      ],
+                    ),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
-
-

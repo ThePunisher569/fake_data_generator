@@ -16,6 +16,7 @@ class UserInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final mediaQ = MediaQuery.sizeOf(context);
 
     return Card(
       elevation: 32,
@@ -27,11 +28,15 @@ class UserInfo extends StatelessWidget {
         clipBehavior: Clip.antiAliasWithSaveLayer,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(48),
-          gradient: const LinearGradient(
-            colors: [Colors.yellow, Colors.blue, Colors.green],
+          gradient: LinearGradient(
+            colors: [
+              Colors.red.withOpacity(0.7),
+              Colors.purple.withOpacity(0.7),
+              Colors.indigo.withOpacity(0.7),
+            ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            stops: [0.3, 0.6, 1],
+            stops: const [0.3, 0.6, 1],
           ),
           boxShadow: [
             BoxShadow(
@@ -177,11 +182,11 @@ class UserInfo extends StatelessWidget {
               children: [
                 IconButton(
                   tooltip:
-                  'lat: ${user!.address.coordinates.lat}, log: ${user!.address.coordinates.lng}',
+                      'lat: ${user!.address.coordinates.lat}, log: ${user!.address.coordinates.lng}',
                   onPressed: () async {
                     Uri mapUrl = Uri.https('google.com', '/maps', {
                       'q':
-                      '${user!.address.coordinates.lat},${user!.address.coordinates.lng}'
+                          '${user!.address.coordinates.lat},${user!.address.coordinates.lng}'
                     });
                     if (await canLaunchUrl(mapUrl)) {
                       launchUrl(mapUrl);

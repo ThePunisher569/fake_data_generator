@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 
@@ -58,6 +59,14 @@ const gapH56 = SizedBox(width: 56);
 const gapH64 = SizedBox(width: 64);
 const gapH72 = SizedBox(width: 72);
 const gapH80 = SizedBox(width: 80);
+
+
+final loadingWidget = Center(
+  child: CupertinoActivityIndicator(
+    color: Colors.deepPurpleAccent.shade200,
+    radius: 48,
+  ),
+);
 
 // E881AC, FE7BAD,
 final logger = Logger();

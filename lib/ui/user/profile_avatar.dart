@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:image_network/image_network.dart';
 
 import '../../api/models/user/user.dart';
 import '../../utils/constants.dart';
@@ -13,6 +15,10 @@ class ProfileAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQ = MediaQuery.sizeOf(context);
+
+    final theme = Theme.of(context);
+
     return Container(
       clipBehavior: Clip.antiAliasWithSaveLayer,
       decoration: BoxDecoration(
@@ -21,25 +27,23 @@ class ProfileAvatar extends StatelessWidget {
       ),
       alignment: Alignment.center,
       padding: const EdgeInsets.all(32),
-      child: Image.network(
-        user!.avatar,
-        alignment: Alignment.bottomCenter,
-        fit: BoxFit.contain,
-        filterQuality: FilterQuality.high,
-        loadingBuilder: (context, child, loadingProgress) =>
-        loadingProgress?.cumulativeBytesLoaded ==
-            loadingProgress?.expectedTotalBytes
-            ? child
-            : const Center(
-          child: Column(
-            children: [
-              Icon(Icons.downloading_rounded),
-              gapV8,
-              Text('Loading Avatar...'),
-            ],
-          ),
+      child: ImageNetwork(
+        image: user!.avatar,
+        width: mediaQ.width * 0.22,
+        height: mediaQ.height * 0.38,
+        fitWeb: BoxFitWeb.contain,
+        onLoading: const Column(
+          children: [
+            CupertinoActivityIndicator(
+              radius: 48,
+            ),
+            gapV24,
+            Icon(Icons.downloading_rounded),
+            gapV8,
+            Text('Loading Avatar...'),
+          ],
         ),
-        errorBuilder: (context, error, stackTrace) => Center(
+        onError: Center(
           child: Column(
             children: [
               Icon(
