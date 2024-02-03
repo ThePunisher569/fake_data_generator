@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -29,11 +31,8 @@ class UserInfo extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(48),
           gradient: LinearGradient(
-            colors: [
-              Colors.red.withOpacity(0.7),
-              Colors.purple.withOpacity(0.7),
-              Colors.indigo.withOpacity(0.7),
-            ],
+            colors: Constants
+                .gradientList[Random().nextInt(Constants.gradientList.length)],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             stops: const [0.3, 0.6, 1],
@@ -115,7 +114,22 @@ class UserInfo extends StatelessWidget {
             ),
             gapV16,
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Icons.phone_rounded),
+                ),
+                gapH8,
+                Text(
+                  user!.phoneNumber,
+                  style: theme.textTheme.headlineSmall?.copyWith(
+                      color: Colors.black87, fontWeight: FontWeight.w600),
+                ),
+              ],
+            ),
+            gapV16,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Tooltip(
                   message: 'Date of Birth',
@@ -156,22 +170,6 @@ class UserInfo extends StatelessWidget {
                         ),
                       ),
                     ],
-                  ),
-                ),
-              ],
-            ),
-            gapV16,
-            Row(
-              children: [
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.phone_rounded),
-                ),
-                gapH8,
-                Text(
-                  user!.phoneNumber,
-                  style: theme.textTheme.headlineSmall?.copyWith(
-                    color: Colors.black87,
                   ),
                 ),
               ],

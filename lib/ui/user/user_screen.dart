@@ -140,7 +140,7 @@ class _UserScreenState extends State<UserScreen> {
                           ),
                           tooltip:
                               'Refresh this page to generate another information about user',
-                          foregroundColor: Colors.orange.shade300,
+                          foregroundColor: Colors.orange.shade200,
                           focusElevation: 48,
                           onPressed: () {
                             getData();
@@ -148,7 +148,7 @@ class _UserScreenState extends State<UserScreen> {
                           label: Text(
                             'Generate Another Information',
                             style: theme.textTheme.bodyLarge?.copyWith(
-                              color: Colors.orange.shade300,
+                              color: Colors.orange.shade200,
                             ),
                           ),
                           icon: const Icon(Icons.refresh_rounded),
@@ -159,8 +159,8 @@ class _UserScreenState extends State<UserScreen> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             ProfileAvatar(user: user),
-                            gapH72,
-                            UserInfo(user: user)
+                            gapH64,
+                            Expanded(child: UserInfo(user: user))
                           ],
                         ),
                         gapV48,

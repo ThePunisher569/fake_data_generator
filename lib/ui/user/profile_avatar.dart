@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_network/image_network.dart';
@@ -22,22 +24,25 @@ class ProfileAvatar extends StatelessWidget {
     return Container(
       clipBehavior: Clip.antiAliasWithSaveLayer,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(48),
-        color: Colors.blueAccent,
+        shape: BoxShape.circle,
+        color: Constants
+            .mixedColors[Random().nextInt(Constants.mixedColors.length)]
+            .shade300,
       ),
       alignment: Alignment.center,
-      padding: const EdgeInsets.all(32),
       child: ImageNetwork(
         image: user!.avatar,
         width: mediaQ.width * 0.22,
-        height: mediaQ.height * 0.38,
-        fitWeb: BoxFitWeb.contain,
+        height: mediaQ.height * 0.44,
+        fitWeb: BoxFitWeb.fill,
         onLoading: const Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CupertinoActivityIndicator(
               radius: 48,
+              color: Colors.black87,
             ),
-            gapV24,
+            gapV32,
             Icon(Icons.downloading_rounded),
             gapV8,
             Text('Loading Avatar...'),
@@ -48,9 +53,10 @@ class ProfileAvatar extends StatelessWidget {
             children: [
               Icon(
                 Icons.error_rounded,
+                size: 48,
                 color: Colors.red.shade800,
               ),
-              gapV8,
+              gapV16,
               const Text('Unable to load the Avatar'),
             ],
           ),
