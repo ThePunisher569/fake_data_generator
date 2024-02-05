@@ -23,9 +23,12 @@ class MyApp extends StatelessWidget {
           weight: 600.0,
         ),
         scaffoldBackgroundColor: Colors.black87,
+        scrollbarTheme: const ScrollbarThemeData(
+          thumbColor: MaterialStatePropertyAll(Colors.white30),
+          thickness: MaterialStatePropertyAll(12),
+        ),
         useMaterial3: true,
       ),
-      scrollBehavior: const CupertinoScrollBehavior(),
       themeMode: ThemeMode.dark,
       routerConfig: myRouter,
       debugShowCheckedModeBanner: false,

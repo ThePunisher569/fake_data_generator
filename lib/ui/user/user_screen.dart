@@ -80,12 +80,35 @@ class _UserScreenState extends State<UserScreen> {
 
     final theme = Theme.of(context);
 
+    Widget fab = FloatingActionButton.extended(
+      backgroundColor: Colors.lightBlue.shade800,
+      clipBehavior: Clip.antiAliasWithSaveLayer,
+      elevation: 32,
+      extendedIconLabelSpacing: 12.0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(32),
+      ),
+      tooltip: 'Refresh this page to generate another information about user',
+      foregroundColor: Colors.lime,
+      focusElevation: 48,
+      onPressed: getData,
+      label: Text(
+        'Generate Another Information',
+        style: theme.textTheme.bodyLarge?.copyWith(
+          color: Colors.lime,
+          fontWeight: FontWeight.bold,
+          letterSpacing: 1.2
+        ),
+      ),
+      icon: const Icon(Icons.refresh_rounded),
+    );
+
     return SafeArea(
       child: Scaffold(
         body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: const AssetImage('assets/bg.jpg'),
+              image: const AssetImage('assets/back.png'),
               filterQuality: FilterQuality.high,
               alignment: Alignment.center,
               fit: BoxFit.fill,
@@ -98,14 +121,14 @@ class _UserScreenState extends State<UserScreen> {
             width: mediaQ.width * 0.88,
             height: mediaQ.height * 0.92,
             borderRadius: 32,
-            blur: 6,
+            blur: 2,
             alignment: Alignment.center,
             border: 2,
             linearGradient: LinearGradient(
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
+              begin: Alignment.centerRight,
+              end: Alignment.centerLeft,
               colors: [
-                Colors.white.withOpacity(0),
+                Colors.white.withOpacity(0.016),
                 Colors.white.withOpacity(0.2),
               ],
               stops: const [0.7, 1],
@@ -126,33 +149,11 @@ class _UserScreenState extends State<UserScreen> {
               ),
               physics: const BouncingScrollPhysics(),
               child: isLoading
-                  ? loadingWidget
+                  ? const LoadingWidget(title: 'Generating Information about random person...')
                   : Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        FloatingActionButton.extended(
-                          backgroundColor: Colors.pink.shade900,
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          elevation: 32,
-                          extendedIconLabelSpacing: 12.0,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(32),
-                          ),
-                          tooltip:
-                              'Refresh this page to generate another information about user',
-                          foregroundColor: Colors.orange.shade200,
-                          focusElevation: 48,
-                          onPressed: () {
-                            getData();
-                          },
-                          label: Text(
-                            'Generate Another Information',
-                            style: theme.textTheme.bodyLarge?.copyWith(
-                              color: Colors.orange.shade200,
-                            ),
-                          ),
-                          icon: const Icon(Icons.refresh_rounded),
-                        ),
+                        fab,
                         gapV24,
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,

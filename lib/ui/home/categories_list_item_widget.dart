@@ -41,7 +41,7 @@ class ListItemWidget extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(40),
         ),
-        elevation: 16,
+        elevation: 32,
         shadowColor: Colors.lime.shade300,
         clipBehavior: Clip.antiAliasWithSaveLayer,
         child: Container(
@@ -49,7 +49,7 @@ class ListItemWidget extends StatelessWidget {
           decoration: BoxDecoration(
             gradient: SweepGradient(
               colors: colors,
-              transform: const GradientRotation(math.pi),
+              transform: const GradientRotation(math.pi/8),
               tileMode: TileMode.repeated,
               center: Alignment.center,
             ),

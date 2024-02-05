@@ -26,7 +26,7 @@ class _HomeState extends State<Home> {
         body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: const AssetImage('assets/bg.jpg'),
+              image: const AssetImage('assets/back.png'),
               filterQuality: FilterQuality.high,
               alignment: Alignment.center,
               fit: BoxFit.fill,

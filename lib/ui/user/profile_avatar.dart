@@ -35,31 +35,10 @@ class ProfileAvatar extends StatelessWidget {
         width: mediaQ.width * 0.22,
         height: mediaQ.height * 0.44,
         fitWeb: BoxFitWeb.fill,
-        onLoading: const Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CupertinoActivityIndicator(
-              radius: 48,
-              color: Colors.black87,
-            ),
-            gapV32,
-            Icon(Icons.downloading_rounded),
-            gapV8,
-            Text('Loading Avatar...'),
-          ],
-        ),
-        onError: Center(
-          child: Column(
-            children: [
-              Icon(
-                Icons.error_rounded,
-                size: 48,
-                color: Colors.red.shade800,
-              ),
-              gapV16,
-              const Text('Unable to load the Avatar'),
-            ],
-          ),
+        onLoading: const LoadingWidget(),
+        onError: const LoadingWidget(
+          title: 'Unable to load Avatar!!!',
+          icon: Icons.error_rounded,
         ),
       ),
     );

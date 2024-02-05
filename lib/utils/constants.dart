@@ -58,13 +58,51 @@ const gapH64 = SizedBox(width: 64);
 const gapH72 = SizedBox(width: 72);
 const gapH80 = SizedBox(width: 80);
 
+class LoadingWidget extends StatelessWidget {
+  final String title;
+  final IconData icon;
 
-final loadingWidget = Center(
-  child: CupertinoActivityIndicator(
-    color: Colors.deepPurpleAccent.shade200,
-    radius: 48,
-  ),
-);
+  const LoadingWidget({
+    super.key,
+    this.title = 'Loading',
+    this.icon = Icons.downloading_rounded,
+  });
 
-// E881AC, FE7BAD,
+  @override
+  Widget build(BuildContext context) {
+    return Builder(builder: (context) {
+      final theme = Theme.of(context);
+      return Center(
+        child: Column(
+          children: [
+            const CupertinoActivityIndicator(
+              color: Colors.lightBlue,
+              radius: 48,
+            ),
+            gapV32,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  icon,
+                  color: Colors.grey.shade400,
+                  size: 40,
+                ),
+                gapH24,
+                Text(
+                  title,
+                  textAlign: TextAlign.center,
+                  style: theme.textTheme.titleLarge?.copyWith(
+                    color: Colors.grey.shade400,
+                  ),
+                ),
+              ],
+            )
+          ],
+        ),
+      );
+    });
+  }
+}
+
 final logger = Logger();
