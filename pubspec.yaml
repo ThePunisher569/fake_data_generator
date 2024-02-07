@@ -25,7 +25,7 @@ dependencies:
   url_launcher:
   awesome_card:
   image_network:
-
+  icons_plus:
   cupertino_icons: ^1.0.5
 
 dev_dependencies:

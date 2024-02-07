@@ -1,6 +1,6 @@
-import 'package:fake_data_generator/router.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'router.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,6 +26,15 @@ class MyApp extends StatelessWidget {
         scrollbarTheme: const ScrollbarThemeData(
           thumbColor: MaterialStatePropertyAll(Colors.white30),
           thickness: MaterialStatePropertyAll(12),
+        ),
+        tooltipTheme: TooltipThemeData(
+          decoration: BoxDecoration(
+            color: Colors.black87,
+            borderRadius: BorderRadius.circular(40),
+          ),
+          textAlign: TextAlign.center,
+          height: 24,
+          padding: const EdgeInsets.all(16),
         ),
         useMaterial3: true,
       ),

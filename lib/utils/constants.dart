@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:icons_plus/icons_plus.dart';
 import 'package:logger/logger.dart';
 
 class Constants {
@@ -33,6 +34,30 @@ class Constants {
     Colors.indigo,
     Colors.orange,
     Colors.blue,
+  ];
+
+  static final brands = [
+    Brands.netflix_desktop_app,
+    Brands.amazon_prime,
+    Brands.amazon_prime_video,
+    Brands.amazon_kindle,
+    Brands.amazon_web_services,
+    Brands.spotify,
+    Brands.youtube_music,
+    Brands.youtube_logo,
+    Brands.musically,
+    Brands.music,
+    Brands.musicbee,
+    Brands.google_play_movies_and_tv,
+    Brands.twitch_2,
+    Brands.hulu,
+    Brands.hbo_go,
+    Brands.hbo,
+    Brands.apple_tv,
+    Brands.adobe_premiere_pro,
+    Brands.aliexpress,
+    Brands.soundcloud,
+    Brands.soundbridge,
   ];
 }
 
