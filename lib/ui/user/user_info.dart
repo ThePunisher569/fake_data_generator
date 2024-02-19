@@ -179,8 +179,7 @@ class UserInfo extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 IconButton(
-                  tooltip:
-                      'lat: ${user!.address.coordinates.lat}, log: ${user!.address.coordinates.lng}',
+                  tooltip: 'See location on Map',
                   onPressed: () async {
                     Uri mapUrl = Uri.https('google.com', '/maps', {
                       'q':

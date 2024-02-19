@@ -41,3 +41,9 @@ flutter:
 
   assets:
     - assets/back.png
+    - assets/user.png
+    - assets/address.png
+    - assets/bank.png
+    - assets/cc.png
+    - assets/appliance.png
+    - assets/blood.png

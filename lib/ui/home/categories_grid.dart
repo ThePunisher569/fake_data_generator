@@ -34,7 +34,6 @@ class CategoriesGrid extends StatelessWidget {
               ),
             ),
           ),
-
           Padding(
             padding: const EdgeInsets.all(80),
             child: StaggeredGrid.count(
@@ -43,16 +42,13 @@ class CategoriesGrid extends StatelessWidget {
                 crossAxisSpacing: 100,
                 children: Constants.contentList
                     .map((e) => StaggeredGridTile.fit(
-                  crossAxisCellCount: 3,
-                  child: ListItemWidget(
-                    name: e,
-                    image: Image.network(
-                      'https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&w=1000&q=80',
-                    ),
-                    colors: Constants
-                        .gradientList[Constants.contentList.indexOf(e)],
-                  ),
-                ))
+                          crossAxisCellCount: 3,
+                          child: ListItemWidget(
+                            name: e,
+                            colors: Constants
+                                .gradientList[Constants.contentList.indexOf(e)],
+                          ),
+                        ))
                     .toList()),
           )
         ],
