@@ -20,8 +20,8 @@ class Constants {
   static const gradientList = [
     [Colors.purple, Colors.indigo, Colors.blue],
     [Colors.green, Colors.yellow, Colors.orange],
-    [Colors.indigo, Colors.blue, Colors.green],
     [Colors.orange, Colors.red, Colors.purple],
+    [Colors.indigo, Colors.blue, Colors.green],
     [Colors.blue, Colors.green, Colors.yellow],
     [Colors.red, Colors.purple, Colors.indigo],
   ];
